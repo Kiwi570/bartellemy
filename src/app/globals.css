@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bleu: 30 58 95;
+    --color-orange: 232 93 4;
+    --color-ardoise: 55 65 81;
+    --color-vert: 5 150 105;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-sans text-ardoise-800 bg-white;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold tracking-tight text-bleu;
+  }
+
+  ::selection {
+    @apply bg-orange/20 text-bleu;
+  }
+
+  /* Scrollbar professionnelle */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-ardoise-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-bleu/30 rounded-full;
+    transition: background-color 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-bleu/50;
+  }
+}
+
+@layer components {
+  /* Container */
+  .container-pro {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  /* Primary Button - Orange */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center px-8 py-4
+           bg-orange text-white font-accent font-semibold text-sm uppercase tracking-wider
+           rounded-lg overflow-hidden
+           transition-all duration-300 ease-smooth
+           hover:bg-orange-700 hover:shadow-orange hover:scale-[1.02]
+           active:scale-[0.98];
+  }
+
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-orange-700 to-orange opacity-0 transition-opacity duration-300;
+  }
+
+  .btn-primary:hover::before {
+    @apply opacity-100;
+  }
+
+  .btn-primary span {
+    @apply relative z-10;
+  }
+
+  /* Secondary Button - Bleu */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-4
+           bg-bleu text-white font-accent font-semibold text-sm uppercase tracking-wider
+           rounded-lg
+           transition-all duration-300
+           hover:bg-bleu-700 hover:shadow-pro
+           active:scale-[0.98];
+  }
+
+  /* Outline Button */
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-8 py-4
+           bg-transparent text-bleu font-accent font-semibold text-sm uppercase tracking-wider
+           border-2 border-bleu rounded-lg
+           transition-all duration-300
+           hover:bg-bleu hover:text-white
+           active:scale-[0.98];
+  }
+
+  /* Ghost Button */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 text-orange font-accent font-semibold text-sm uppercase tracking-wider
+           transition-all duration-300
+           hover:gap-4;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white rounded-2xl shadow-card transition-all duration-300;
+  }
+
+  .card-hover:hover {
+    @apply shadow-card-hover -translate-y-1;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-accent font-semibold uppercase tracking-wider;
+  }
+
+  .badge-orange {
+    @apply bg-orange/10 text-orange;
+  }
+
+  .badge-bleu {
+    @apply bg-bleu/10 text-bleu;
+  }
+
+  .badge-vert {
+    @apply bg-vert/10 text-vert;
+  }
+
+  /* RGE Badge */
+  .badge-rge {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-vert text-white rounded-lg font-accent font-semibold text-xs uppercase tracking-wider;
+  }
+
+  /* Input */
+  .input-pro {
+    @apply w-full px-4 py-3 bg-ardoise-50 border border-ardoise-200 rounded-lg
+           font-sans text-ardoise-800 placeholder:text-ardoise-400
+           transition-all duration-300
+           focus:outline-none focus:border-bleu focus:ring-2 focus:ring-bleu/20;
+  }
+
+  .textarea-pro {
+    @apply input-pro resize-none min-h-[120px];
+  }
+
+  /* Section Title */
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-bleu;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-ardoise-600 max-w-2xl;
+  }
+
+  /* Stat card */
+  .stat-card {
+    @apply text-center p-6;
+  }
+
+  .stat-number {
+    @apply text-4xl md:text-5xl font-heading font-bold text-bleu;
+  }
+
+  .stat-label {
+    @apply text-sm text-ardoise-500 mt-2;
+  }
+
+  /* Service icon container */
+  .icon-container {
+    @apply w-16 h-16 flex items-center justify-center rounded-2xl bg-orange/10 text-orange;
+  }
+
+  .icon-container-bleu {
+    @apply w-16 h-16 flex items-center justify-center rounded-2xl bg-bleu/10 text-bleu;
+  }
+}
+
+@layer utilities {
+  /* Animation delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+
+  /* Text balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Hide scrollbar */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Underline animation */
+.underline-animation {
+  position: relative;
+}
+
+.underline-animation::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #E85D04, #F58737);
+  transition: width 0.3s ease;
+}
+
+.underline-animation:hover::after {
+  width: 100%;
+}
+
+/* Gradient text */
+.text-gradient-orange {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-orange to-orange-400;
+}
+
+.text-gradient-bleu {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-bleu to-bleu-400;
+}
